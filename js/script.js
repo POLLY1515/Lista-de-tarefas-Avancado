@@ -13,7 +13,34 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 
 
 //Funções
+const saveTodo = (text) => {
+    const todo = document.createElement("div");
+    todo.classList.add("todo")
 
+    const todoTitle = document.createElement("h3");
+    todoTitle.innerHTML = text;
+    todo.appendChild(todoTitle)
+
+    const doneBtn = document.createElement("button");
+    doneBtn.classList.add("finish-todo")
+    doneBtn.innerHTML = '<i class="fa-solid fa-check"></i>'
+    todo.appendChild(doneBtn);
+
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-todo")
+    editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>'
+    todo.appendChild(editBtn);
+
+    const deletBtn = document.createElement("button");
+    deletBtn.classList.add("remove-todo")
+    deletBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'
+    todo.appendChild(deletBtn);
+
+    todoList.appendChild(todo);
+
+    todoInput.value = "";//limpando o input quando usuario acaba de digitar
+    todoInput.focus();
+};
 
 
 
@@ -28,7 +55,7 @@ todoForm.addEventListener("submit", (e) =>{
 
     const inputValue = todoInput.value//pegando o valor do input
     if(inputValue){
-        console.log(inputValue)
+        saveTodo(inputValue)
     }
 });
 
